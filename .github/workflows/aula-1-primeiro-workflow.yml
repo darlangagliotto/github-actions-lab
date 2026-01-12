@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Dizer Olá
-        run: echo "Olá! Esse é meu primeiro GitHub Actions"
+      - name: Forçar erro
+        run: exit 1
