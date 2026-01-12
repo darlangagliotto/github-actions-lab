@@ -1,0 +1,28 @@
+name: Aula 4 - Recursos do Runner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  recursos-runner:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar CPU
+        run: nproc
+
+      - name: Mostrar memória
+        run: free -h
+
+      - name: Mostrar disco
+        run: df -h
+
+      - name: Simular carga de CPU
+        run: |
+          echo "Consumindo CPU por 10 segundos..."  
+          yes > /dev/null &
+          yes > /dev/null &
+          sleep 10
+          killall yes
