@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Mostrar ambiente
-        run: echo Rodando no ambiente: ${{ matrix.ambiente }}
+        run: echo 'Rodando no ambiente: ${{ matrix.ambiente }}'
 
       - name: Simular trabalho
         run: sleep 3
