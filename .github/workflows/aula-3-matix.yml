@@ -9,13 +9,13 @@ jobs:
   matix-example:
     runs-on: ubuntu-latest
 
-  strategy:
-    matrix:
-      ambiente: [dev, staging, prod]
+    strategy:
+      matrix:
+        ambiente: [dev, staging, prod]
 
-  steps:
-    - name: Mostrar ambiente
-      run: echo "Rodando no ambiente: ${{ matrix.ambiente }}"
+    steps:
+      - name: Mostrar ambiente
+        run: echo "Rodando no ambiente: ${{ matrix.ambiente }}"
 
-    - name: Simular trabalho
-      run: sleep 3      
+      - name: Simular trabalho
+        run: sleep 3
