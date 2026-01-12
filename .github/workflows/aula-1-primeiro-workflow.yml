@@ -1,9 +1,10 @@
 name: Aula 1 - Primeiro Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   hello-world:
