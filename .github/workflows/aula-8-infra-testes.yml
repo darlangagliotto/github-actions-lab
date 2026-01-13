@@ -30,7 +30,7 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          mkdir - p node_modules
+          mkdir -p node_modules
           echo "deps instaladas" >> node_modules/log.txt
 
       - name: Rodar Testes
