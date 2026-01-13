@@ -48,7 +48,7 @@ jobs:
 
           INDEX=1
           for test in $ALL_TESTS; do
-            if [ $((INDEX % TOTAL)) -eq $((SHARD - 1))]; then
+            if [ $((INDEX % TOTAL)) -eq $((SHARD - 1)) ]; then
               echo "Executando $test"
               bash $test
             fi
