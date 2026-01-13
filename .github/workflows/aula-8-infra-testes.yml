@@ -1,0 +1,40 @@
+name: Aula 8 - Infra de Testes
+
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ambiente: [dev, staging, prod]
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Criar deps.lock
+        run: |
+          echo "versão=1" > deps.lock
+      
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('deps.lock') }}
+
+      - name: Instalar dependências
+        run: |
+          mkdir - p node_modules
+          echo "deps instaladas" >> node_modules/log.txt
+
+      - name: Rodar Testes
+        env:
+          TEST_ENV: ${{ matrix.ambiente }}    
+        run: |
+          ./scripts/run-tests.sh  

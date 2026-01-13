@@ -1,10 +1,10 @@
 name: Aula 7 - Cache inteligente com hash
 
 on:
-  #workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   cache-hash-example:
