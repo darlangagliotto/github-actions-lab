@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Rodar K6 Browser (xk6-browser)
+      - name: Rodar K6 Browser
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/scripts \
-            grafana/xk6-browser:latest \
-            run /scripts/k6/aula-14-browser.js
+            grafana/k6:master-with-browser \
+            run --browser /scripts/k6/aula-14-browser.js
