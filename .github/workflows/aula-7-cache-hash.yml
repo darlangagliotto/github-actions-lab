@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "versão=1" > deps.lock
 
-      # Cache inteligente baseado no hash do arquivo
+      # Cache inteligente baseado no hash do arquivo 
       - name: Cache com hash
         uses: actions/cache@v4
         with:
