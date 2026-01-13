@@ -17,7 +17,7 @@ jobs:
       # Simulando um arquivo de dependências
       - name: Criar arquivo de dependências
         run: |
-          echo "versão=1" > deps.lock
+          echo "versão=2" > deps.lock
 
       # Cache inteligente baseado no hash do arquivo
       - name: Cache com hash
