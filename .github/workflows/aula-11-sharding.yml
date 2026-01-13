@@ -1,10 +1,10 @@
 name: Aula 11 - Test Sharding
 
 on:
-  #workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   tests:
