@@ -15,4 +15,4 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}:/scripts \
             grafana/k6:master-with-browser \
-            run --browser /scripts/k6/aula-14-browser.js
+            run /scripts/k6/aula-14-browser.js
