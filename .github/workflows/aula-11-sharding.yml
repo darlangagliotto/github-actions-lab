@@ -1,0 +1,56 @@
+name: Aula 11 - Test Sharding
+
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        shard: [1,2,3,4]
+        total_shards: [4]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Criar testes fake
+        run: |
+          mkdir -p tests/unit
+          mkdir -p tests/integration
+
+          echo 'echo "Unit test 1"' > tests/unit/test1.sh
+          echo 'echo "Unit test 2"' > tests/unit/test2.sh
+          echo 'echo "Unit test 3"' > tests/unit/test3.sh
+          echo 'echo "Unit test 4"' > tests/unit/test4.sh
+
+          echo 'echo "Integration test 1"' > tests/integration/test1.sh
+          echo 'echo "Integration test 2"' > tests/integration/test2.sh
+          echo 'echo "Integration test 3"' > tests/integration/test3.sh
+          echo 'echo "Integration test 4"' > tests/integration/test4.sh
+
+          chmod +x tests/**/*.sh
+
+      - name: Executar shard ${{ matrix.shard }}
+        run: |
+          ALL_TESTS=$(ls tests/**/**/*.sh | sort)
+          TOTAL=${{ matrix.total_shards }}
+          SHARD=${{ matrix.shard }}
+
+          echo "Shard $SHARD de $TOTAL"
+          echo "Testes totais:"
+          echo "$ALL_TESTS"
+
+          INDEX=1
+          for test in $ALL_TESTS; do
+            if [ $((INDEX % TOTAL)) -eq $((SHARD - 1))]; then
+              echo "Executando $test"
+              bash $test
+            fi
+            INDEX=$((INDEX + 1))
+          done
