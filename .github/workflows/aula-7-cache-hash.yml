@@ -1,0 +1,37 @@
+name: Aula 7 - Cache inteligente com hash
+
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  cache-hash-example:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # Simulando um arquivo de dependências
+      - name: Criar arquivo de dependências
+        run: |
+          echo "versão=1" > deps.lock
+
+      # Cache inteligente baseado no hash do arquivo
+      - name: Cache com hash
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('deps.lock') }}
+
+      # Simula instalação de dependências
+      - name: Instalar dependências
+        run: |
+          mkdir - p node_modules
+          echo "dependência baseada em deps.lock" > node_modules/exemplo.txt
+
+      - name: Mostrar cache
+        run: |
+          ls node_modules
