@@ -1,0 +1,22 @@
+name: Aula 5 - Paralelismo Consciente
+
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  paralelo-controlado:
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 2
+      matrix:
+        instancia: [1,2,3,4]
+
+    steps:
+      - name: Mostrar instância
+        run: |
+          echo "Instância: ${{ matrix.instancia }}"
+          sleep 5
