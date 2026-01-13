@@ -1,0 +1,17 @@
+name: Aula 14 - K6 Browser
+
+on:
+  workflow_dispatch:
+
+jobs:
+  k6-browser:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rodar K6 Browser
+        uses: grafana/k6-actions@v0.3.0
+        with:
+          filename: k6/aula-14-browser.js
+          flags: --browser
