@@ -1,9 +1,10 @@
 name: CI - Unit Tests
 
 on:
-  push:
-    branches:
-      - "**"
+  workflow_dispatch
+  # push:
+  #   branches:
+  #     - "**"
 
 jobs:
   unit-tests:
