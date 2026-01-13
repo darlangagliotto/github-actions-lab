@@ -29,8 +29,7 @@ jobs:
       # Simula instalação de dependências
       - name: Instalar dependências
         run: |
-          mkdir - p node_modules
-          echo "dependência baseada em deps.lock" > node_modules/exemplo.txt
+          echo "dependência baseada em deps.lock" >> node_modules/exemplo.txt
 
       - name: Mostrar cache
         run: |
