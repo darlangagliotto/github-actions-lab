@@ -1,0 +1,23 @@
+integration-test:
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Criar serviço fake
+      run: |
+        mkdir fake_service
+        echo '{ "status": "Ok", "value": 42 }' > fake_service/response.json
+
+    - name: Executar lógica de integração
+      run: |
+       VALUE=$(cat fake_service/response.json | jq '.value')
+       echo "Valor recebido: $VALUE"
+        if [ "$VALUE" -ne 42]; then
+          echo "Contrato quebrado"
+          exit 1
+        fi
+
+    - name: Teste de integração passou
+      run: echo "Integração validada com sucesso"

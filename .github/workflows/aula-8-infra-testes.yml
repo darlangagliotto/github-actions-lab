@@ -1,10 +1,10 @@
 name: Aula 8 - Infra de Testes
 
 on:
-  #workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   tests:
