@@ -1,0 +1,29 @@
+name: Aula 6 - Cache básico
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  cache-example:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Criar pasta simulando dependências
+        run: |
+          mkdir -p node_modules
+          echo "dependencia_fake" > node_modules/example.txt
+
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}
+
+      - name: Mostrar conteúdo do cache
+        run: |
+          ls node_modules
