@@ -10,14 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instalar K6
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gnupg software-properties-common
-          curl -fsSL https://packages.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
-          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://packages.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
-          sudo apt-get update
-          sudo apt-get install -y k6
-
-      - name: Rodar teste de performance
-        run: k6 run k6/aula-13-basic.js
+      - name: Rodar teste de performance com K6
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: k6/aula-13-basic.js
