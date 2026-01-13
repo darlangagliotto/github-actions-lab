@@ -29,7 +29,7 @@ jobs:
           echo 'echo "Unit test 3"' > tests/unit/test3.sh
           echo 'echo "Unit test 4"' > tests/unit/test4.sh
 
-          echo 'echo "Integration test 5"' > tests/integration/test5.sh
+          echo 'echo "Integration test 5"' > tests/integration/test5.sh 
           echo 'echo "Integration test 6"' > tests/integration/test6.sh
           echo 'echo "Integration test 7"' > tests/integration/test7.sh
           echo 'echo "Integration test 8"' > tests/integration/test8.sh
