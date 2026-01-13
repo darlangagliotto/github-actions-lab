@@ -38,7 +38,7 @@ jobs:
 
       - name: Executar shard ${{ matrix.shard }}
         run: |
-          ALL_TESTS=$(ls tests/**/**/*.sh | sort)
+          ALL_TESTS=$(ls tests/**/*.sh | sort)
           TOTAL=${{ matrix.total_shards }}
           SHARD=${{ matrix.shard }}
 
