@@ -21,9 +21,10 @@ export default async function () {
 
   await page.goto('https://example.com');
 
-  check(page, {
-    'título contém Example': async () =>
-      (await page.title()).includes('Example'),
+  const title = await page.title();
+
+  check(title, {
+    'título contém Example': (t) => t.includes('Example'),
   });
 
   await page.close();
