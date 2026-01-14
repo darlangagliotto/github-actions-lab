@@ -1,9 +1,10 @@
 name: Aula 15 - Concurrency Testing
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   concurrency-test:

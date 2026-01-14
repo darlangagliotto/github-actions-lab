@@ -1,0 +1,21 @@
+name: Aula 16 - Chaos Testing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  chaos-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rodar chaos test com k6
+        run: |
+          docker run --rm \
+            -v $PWD/k6:/scripts \
+            grafana/k6 \
+            run /scripts/aula-16-chaos.js
