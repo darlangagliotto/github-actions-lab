@@ -1,0 +1,21 @@
+name: Aula 15 - Concurrency Testing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  concurrency-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rodar teste de conconcorrencia com k6
+        run: |
+          docker run --rm \
+            -v $PWD/k6:/scripts \
+            grafana/k6 \
+            run /scripts/aula-15-concurrency.js
